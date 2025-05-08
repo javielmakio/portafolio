@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Completo - Diseño Gráfico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8754E8;
+            --secondary: #FBA469;
+            --dark: #333333;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Barra de navegación */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeInDown 0.5s ease-out;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Slider Hero */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+        }
+
+        .slide h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title2{
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #FBA469;
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title3{
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #A3EAE7;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #5a52e0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+        }
+
+        /* Sección de servicios */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .service-header2 {
+            background-color: #FBA469;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .service-header3 {
+            background-color: #A3EAE7 ;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .service-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-body {
+            padding: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBA469;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .price3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #A3EAE7;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price2 span {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .price3 span {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .price span {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .service-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-details ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        .service-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .terms {
+            font-size: 0.9rem;
+            color: var(--gray);
+            border-top: 1px dashed #ddd;
+            padding-top: 1rem;
+        }
+
+        /* Sobre mí */
+        #about {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05) 0%, rgba(255, 101, 132, 0.05) 100%);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Contacto */
+        #contact {
+            padding: 4rem 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-slider {
+                height: 60vh;
+            }
+
+            .slide h1 {
+                font-size: 2rem;
+            }
+
+            .slide p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-slider {
+                height: 50vh;
+            }
+            
+            .slide-content {
+                padding: 1rem;
+            }
+            
+            .slide h1 {
+                font-size: 1.5rem;
+            }
+        }
+        .logo img {
+   transition: transform 0.3s; /* Efecto hover suave */
+}
+
+.logo img:hover {
+   transform: scale(1.05); /* Pequeño zoom al pasar el mouse */
+}
+.section-divider {
+    background: linear-gradient(90deg,rgba(163, 234, 231, 1) 0%, rgba(237, 226, 216, 1) 26%, rgba(251, 164, 105, 1) 50%, rgba(237, 226, 216, 1) 76%, rgba(135, 84, 232, 1) 100%); /* Color azul moderno - cámbialo */
+            color: white;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 0rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Efecto opcional de bordes angulados */
+        .section-divider::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+        .price-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(135, 84, 232, 0.1);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: var(--primary);
+}
+.price-toggle2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(203, 150, 70, 0.1);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #FBA469;
+}
+.price-toggle3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(70, 203, 172, 0.1);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #A3EAE7;
+}
+
+.price-toggle:hover {
+    background-color: rgba(135, 84, 232, 0.2);
+}
+.price-toggle2:hover {
+    background-color: rgba(148, 103, 43, 0.2);
+}
+.price-toggle3:hover {
+    background-color: rgba(43, 148, 109, 0.2);
+}
+.price-toggle i {
+    transition: transform 0.3s;
+}
+
+.price-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.price-container {
+    animation: fadeIn 0.3s ease-out;
+}
+.colormor{
+    color:#FBA469;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="./IMG/log.png" alt="Tu Logo" style="height: 50px;">
+         </a>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="menu">
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Slider Hero -->
+    <div class="hero-slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="slide-content">
+                <h1>Diseño Gráfico Profesional</h1>
+                <p>Soluciones creativas para hacer destacar tu marca</p>
+                <a href="#contact" class="btn">Contáctame</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="slide-content">
+                <h1>Identidad Visual Única</h1>
+                <p>Desarrollo de marcas memorables y coherentes</p>
+                <a href="#services" class="btn">Ver Servicios</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="slide-content">
+                <h1>Motion Graphics Impactantes</h1>
+                <p>Animaciones que capturan la atención de tu audiencia</p>
+                <a href="#services" class="btn">Explorar Portafolio</a>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/573001234567" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="section-divider">
+        SERVICIOS
+    </div>
+
+    <main>
+        <!-- Sección Servicios -->
+        <section id="services" class="section">
+            <h2 class="section-title">Branding e identidad visual</h2>
+            <div class="services">
+                
+                <!-- Branding -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Logo Básico</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $100 - $300 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $400K - $1.2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>2-3 propuestas iniciales</li>
+                                <li>3 ajustes menores</li>
+                                <li>Formatos: PNG, JPG, SVG</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-10 días hábiles | 📌 50% anticipado
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <h3>Rediseño de Logo</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $150 - $500 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $600K - $2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Análisis de marca existente</li>
+                                <li>2 versiones + 3 ajustes</li>
+                                <li>Optimización para todos los medios</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 7-12 días hábiles | ✅ Incluye guía básica
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Manual de Marca</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $300 - $800 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $1.2M - $3.2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Guía completa de identidad</li>
+                                <li>Usos correctos/incorrectos</li>
+                                <li>Paleta de colores y tipografías</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 10-15 días | 📄 Entrega en PDF editable
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="section">
+            <h2 class="section-title2">Ilustración y gráficos</h2>
+            <div class="services">
+                <!-- Ilustración -->
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h3>Ilustración Vectorial</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $80 - $500 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $320K - $2M <span>COP</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-details">
+                            <ul>
+                                <li>1 boceto inicial + 2 ajustes</li>
+                                <li>Archivos: AI, EPS, PNG</li>
+                                <li>Ilustración simple o compleja</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 3-15 días | 🎨 Ajustes por complejidad
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Infografías</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $100 - $600 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $400K - $2.4M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Investigación básica incluida</li>
+                                <li>2 versiones de estructura</li>
+                                <li>Formato para impresión/digital</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-14 días | 📊 Animación (+$150 USD)
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="far fa-file-powerpoint"></i>
+                        </div>
+                        <h3>PPT Corporativa</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $120 - $280 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $500K - $1.2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Plantillas desde 0</li>
+                                <li>Adaptación de la marca</li>
+                                <li>Diagramación</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 3-5 días | Entre 10 a 30 slides
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section id="services" class="section">
+            <h2 class="section-title3">Publicidad y Merchandising</h2>
+            <div class="services">
+                <!-- Publicidad -->
+                <div class="service-card">
+                    <div class="service-header3">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Publicidad Exterior</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle3" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price3">
+                                $200 - $800 <span>USD</span>
+                            </div>
+                            <div class="price3">
+                                $800K - $3.2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Diseño para vallas, metro, etc.</li>
+                                <li>Adaptación a medidas estándar</li>
+                                <li>1 propuesta + 2 ajustes</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 7-10 días | 🖨️ No incluye impresión
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header3">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Merchandising</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle3" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price3">
+                                $50 - $300 <span>USD</span>
+                            </div>
+                            <div class="price3">
+                                $200K - $1.2M <span>COP</span>
+                            </div>
+                        </div>
+                       
+                        <div class="service-details">
+                            <ul>
+                                <li>Diseño para camisas, tazas, etc.</li>
+                                <li>Mockup realista incluido</li>
+                                <li>Archivos listos para impresión</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-8 días | 🧢 Múltiples artículos (descuento)
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header3">
+                        <div class="service-icon">
+                            <i class="fa fa-newspaper"></i>
+                        </div>
+                        <h3>Impresos</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle3" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price3">
+                                $50 - $200 <span>USD</span>
+                            </div>
+                            <div class="price3">
+                                $200K - $800k <span>COP</span>
+                            </div>
+                        </div>
+                       
+                        <div class="service-details">
+                            <ul>
+                                <li>Flyers, folletos, banners. etc.</li>
+                                <li>1 propuesta + 2 ajustes</li>
+                                <li>Archivos listos para impresión</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 3-5 días | 🖨️ No incluye impresión
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section id="services" class="section">
+            <h2 class="section-title">Motion y video</h2>
+            <div class="services">
+                
+                <!-- Video -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Motion Graphics</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $300 - $1000 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $1.2M - $4M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>30 segundos animados</li>
+                                <li>Storyboard + 2 ajustes</li>
+                                <li>Música básica incluida</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-10 días | 🎞️ Versiones HD y para redes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <h3>Edicion de video</video></h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $150 - $500 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $600K - $2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>De 01 a 6 minutoss</li>
+                                <li>Corte básico, transiciones, textos.</li>
+                                <li>Optimización para todos los medios</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 3-10 días hábiles | 🎞️ Versiones HD y para redes o tv
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fab fa-amilia"></i>
+                        </div>
+                        <h3>Animacion Logo</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price">
+                                $100 - $400 <span>USD</span>
+                            </div>
+                            <div class="price">
+                                $130k - $1.7M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Animación en 2D adaptado a digital</li>
+                                <li>20 Segundo de duración</li>
+                                <li>1 opción + 3 ajustes sobre la animación</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 03-10 días | 🎞️ Versiones HD o 4k para redes o tv
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="section">
+            <h2 class="section-title2">Digital</h2>
+            <div class="services">
+                <!-- Digital -->
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <h3>Parrilla RRSS</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $249 - $800 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $1.0M - $3.2M <span>COP</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-details">
+                            <ul>
+                                <li>12 diseños para redes sociales</li>
+                                <li>Coherencia visual con tu marca</li>
+                                <li>Formatos optimizados</li>
+                                <li>Icluye 3 REELS o Tiktok</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 10-15 días | 📅 Incluye calendario
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="fas fab fa-adversal"></i>
+                        </div>
+                        <h3>Piezas ADS</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $100 - $600 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $400K - $2.4M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>10 a 15 piezas fromatos JPG, PNG y GIF</li>
+                                <li>Coherencia visual con tu marca</li>
+                                <li>Formatos optimizados para Google y facebook ADS</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-14 días | 📊 Animación (+$150 USD)
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header2">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Landing Page</h3>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-toggle2" onclick="togglePrice(this)">
+                            <span>Ver Precios</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="price-container" style="display: none;">
+                            <div class="price2">
+                                $120 - $280 <span>USD</span>
+                            </div>
+                            <div class="price2">
+                                $500K - $1.2M <span>COP</span>
+                            </div>
+                        </div>
+                        <div class="service-details">
+                            <ul>
+                                <li>Diseño en HTML, CSS y Java Scrpt básico</li>
+                                <li>Optimizado para carga rapida</li>
+                            </ul>
+                        </div>
+                        <div class="terms">
+                            ⏳ 5-15 días | 💻 Desarrollo web básico
+                        </div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Sobre mí -->
+        <section id="about" class="section">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="./IMG/imagenjavi.jpg" alt="Diseñadora gráfica">
+                </div>
+                <div class="about-text">
+                    <h2>Hola, soy <span style="color: var(--primary);">Javier Velásquez</span></h2>
+                    <p>Director de Arte con más de 5 años de
+                        experiencia en diseño gráfico,
+                        conceptualización, producción
+                        audiovisual, entre otros. Apasionado
+                        por la creación 
+                        la innovador y la dirección de arte para
+                        medios digitales, tradicionales y freelance.</p>
+                    <p>Mi enfoque combina creatividad, estrategia y atención al detalle para crear soluciones que no solo sean hermosas, sino también efectivas para los objetivos de mis clientes.</p>
+                    <div class="skills">
+                        <span class="skill">Adobe Creative Suite</span>
+                        <span class="skill">Branding</span>
+                        <span class="skill">Diseño Digital</span>
+                        <span class="skill">Motion Graphics</span>
+                        <span class="skill">Ilustración</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sección Portafolio Behance -->
+<section id="portfolio" class="section" style="background: linear-gradient(135deg, rgba(108, 99, 255, 0.05) 0%, rgba(255, 101, 132, 0.05) 100%); padding: 4rem 0;">
+    <h2 class="section-title">Portafolio en Behance</h2>
+    <div class="behance-container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <div class="behance-header" style="text-align: center; margin-bottom: 3rem;">
+            <p style="font-size: 1.2rem; color: var(--gray); max-width: 800px; margin: 0 auto 2rem;">
+                Explora mis proyectos destacados con casos de estudio detallados.
+            </p>
+            <a href="https://www.behance.net/javierV" target="_blank" class="btn" style="background-color: #0057FF; display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class="fab fa-behance"></i> Ver Behance Completo
+            </a>
+        </div>
+        
+        <!-- Grid de proyectos (simulado) -->
+        <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+            <!-- Proyecto 1 -->
+            <div class="project-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s;">
+                <div class="project-thumbnail" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="./IMG/01.jpg" alt="Proyecto Branding" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    <div class="project-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(108, 99, 255, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;">
+                        <a href="https://www.behance.net/gallery/197957295/On-fire-Refisal-Young-Lions-Colombia-2024" target="_blank" style="color: white; font-weight: 600; text-decoration: none; background: var(--secondary); padding: 0.5rem 1rem; border-radius: 30px;">Ver Proyecto</a>
+                    </div>
+                </div>
+                <div class="project-info" style="padding: 1.5rem;">
+                    <h3 style="color: var(--dark); margin-bottom: 0.5rem;">On fire Refisal - Young Lions Colombia 2024"</h3>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Dirección de arte, cración imagen visual y producción audiovisual</p>
+                    <div class="project-stats" style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--gray); font-size: 0.8rem;">
+                        <span><i class="fas fa-heart"></i> 245</span>
+                        <span><i class="fas fa-eye"></i> 1.2k</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="project-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s;">
+                <div class="project-thumbnail" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="./IMG/02.jpg" alt="Proyecto Motion" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    <div class="project-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(108, 99, 255, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;">
+                        <a href="https://www.behance.net/gallery/188716521/Un-Pais-con-Contexto-El-Pais" target="_blank" style="color: white; font-weight: 600; text-decoration: none; background: var(--secondary); padding: 0.5rem 1rem; border-radius: 30px;">Ver Proyecto</a>
+                    </div>
+                </div>
+                <div class="project-info" style="padding: 1.5rem;">
+                    <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Un País con Contexto - El País</h3>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Dirección de arte y producción audiovisual</p>
+                    <div class="project-stats" style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--gray); font-size: 0.8rem;">
+                        <span><i class="fas fa-heart"></i> 189</span>
+                        <span><i class="fas fa-eye"></i> 980</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="project-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s;">
+                <div class="project-thumbnail" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="./IMG/03.jpg" alt="Proyecto Editorial" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    <div class="project-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(108, 99, 255, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;">
+                        <a href="https://www.behance.net/gallery/137560705/Jingle-Bell-Rock-2021" target="_blank" style="color: white; font-weight: 600; text-decoration: none; background: var(--secondary); padding: 0.5rem 1rem; border-radius: 30px;">Ver Proyecto</a>
+                    </div>
+                </div>
+                <div class="project-info" style="padding: 1.5rem;">
+                    <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Jingle Bell Rock 2021</h3>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Diseño de cartel, visual e ilustración del evento</p>
+                    <div class="project-stats" style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--gray); font-size: 0.8rem;">
+                        <span><i class="fas fa-heart"></i> 312</span>
+                        <span><i class="fas fa-eye"></i> 2.3k</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Contacto -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Bogotá, Colombia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>javier16201@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+57 3125145151</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="contact-form">
+                    <h3>Envíame un Mensaje</h3>
+                    <form id="formContacto">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <input type="text" id="servicio" name="servicio">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.behance.net/javierV"><i class="fab fa-behance"></i></a>
+            <a href="https://www.linkedin.com/in/javier-vel%C3%A1squez-a95609179/"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>© 2023 Javier Velásquez. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Menú responsive
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('show');
+        });
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Configurar eventos de los dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Cambio automático cada 5 segundos
+        setInterval(nextSlide, 5000);
+
+        // Formulario de contacto
+        document.getElementById('formContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+            this.reset();
+        });
+        // Efectos para tarjetas de Behance
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.querySelector('.project-thumbnail img').style.transform = 'scale(1.1)';
+        this.querySelector('.project-overlay').style.opacity = '1';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.querySelector('.project-thumbnail img').style.transform = 'scale(1)';
+        this.querySelector('.project-overlay').style.opacity = '0';
+    });
+});
+function togglePrice(element) {
+    const container = element.nextElementSibling;
+    element.classList.toggle('active');
+    
+    if (container.style.display === 'none' || !container.style.display) {
+        container.style.display = 'block';
+    } else {
+        container.style.display = 'none';
+    }
+}
+    </script>
+</body>
+</html>
